@@ -20,7 +20,7 @@ The Script is designed to run on a small single-board computer such as the Raspb
 
 ### Built With
 
-![python logo](https://github.com/GenesysCloudBlueprints/gc-queue-visual-audio-alerter/blob/main/blueprint/images/python_logo.png?raw=true)
+![python logo](https://github.com/GenesysCloudBlueprints/gc-queue-visual-audio-alerter/blob/main/blueprint/images/python_logo_sm.png?raw=true)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
