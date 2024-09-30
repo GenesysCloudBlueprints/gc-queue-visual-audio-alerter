@@ -8,7 +8,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![alerter diagram](https://github.com/GenesysCloudBlueprints/gc-queue-visual-audio-alerter/refs/heads/master/CloudQuery.png)
+![alerter diagram](https://github.com/GenesysCloudBlueprints/gc-queue-visual-audio-alerter/blob/main/blueprint/images/CloudQuery.png?raw=true)
 
 This script can be used by Genesys Cloud customers who require external audio/visual alerting devices to be deployed in their premises. An example would be a warehouse setting or on-call environment where the agent/staff is not required at their desk at all times.
 
@@ -20,7 +20,7 @@ The Script is designed to run on a small single-board computer such as the Raspb
 
 ### Built With
 
-![python logo](https://github.com/GenesysCloudBlueprints/gc-queue-visual-audio-alerter/refs/heads/master/python_logo.png)
+![python logo](https://github.com/GenesysCloudBlueprints/gc-queue-visual-audio-alerter/blob/main/blueprint/images/python_logo.png?raw=true)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
