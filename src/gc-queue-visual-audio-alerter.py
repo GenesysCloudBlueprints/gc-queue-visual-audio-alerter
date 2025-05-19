@@ -5,30 +5,29 @@
 #  Install omxplayer (If you're using a device with audio output and wish to use a sound file) (sudo apt-get install omxplayer)
 #
 #  By Mark Booth
-#  Last updated 2024-09-20
+#  Last updated 2025-05-19
 
 print("Initialising...")
 
 import base64, json, requests, os, time
 import PureCloudPlatformClientV2
-import RPi.GPIO as GPIO
+from gpiozero import Buzzer
+from gpiozero import LED
 from PureCloudPlatformClientV2.rest import ApiException
 
 buzz_pin = 7            # GPIO Pin used for buzzer
 led_pin = 5             # GPIO Pin used for LED
-query_interval_time = 5 # Time between queries (in seconds)
+query_interval_time = 4 # Time between queries (in seconds)
 buzz_duration = 2       # Duration of audible alert (in seconds)
 
-queue_names = ["Sales", "Accounts"]                                                     # Populate with names of queues to monitor
+queue_names = ["Sales", "Accounts"]                                                       # Populate with names of queues to monitor
 os.environ["PURECLOUD_CLIENT_ID"] = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"              # Provide OAuth Client ID
 os.environ["PURECLOUD_CLIENT_SECRET"] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"   # Provide OAuth Client Secret
 
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(buzz_pin, GPIO.OUT)
-GPIO.output(buzz_pin, 0)
-GPIO.setup(led_pin, GPIO.OUT)
-GPIO.output(led_pin, 0)
+buzzer = Buzzer(buzz_pin)
+led = LED(led_pin)
+buzzer.off()
+led.off()
 
 print('Audiable alert when interactions are waiting in queue(s) using PureCloud Python SDK')
 
@@ -102,14 +101,12 @@ if __name__ == "__main__":
                 total_waiting_interactions += 1
         if total_waiting_interactions > 0:
             #os.system('omxplayer /home/pi/sound.mp3 > /dev/null 2>&1') # Uncomment if using omx player to play sound file instead of buzzer beep
-            GPIO.output(buzz_pin, 1)
+            buzzer.on()
+            led.on()
             time.sleep(buzz_duration)
-            GPIO.output(buzz_pin, 0)
+            buzzer.off()
+            led.off()
         else:
             #print("Waiting for queued interactions...")
             pass
-        if total_waiting_interactions == 0:
-            GPIO.output(led_pin, 0)
-        else:
-            GPIO.output(led_pin, 1)
         time.sleep(query_interval_time)
