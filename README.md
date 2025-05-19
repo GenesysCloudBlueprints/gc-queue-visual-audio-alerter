@@ -41,8 +41,6 @@ As are standard python libraries: time, requests.
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
 1. Configure a new Genesys Cloud OAuth client as described <a href="https://help.mypurecloud.com/articles/create-an-oauth-client/">here</a>
 2. Clone the repo
    ```sh
